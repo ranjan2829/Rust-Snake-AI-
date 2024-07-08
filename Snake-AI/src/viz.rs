@@ -1,2 +1,65 @@
 use std::io::{self, stdout, Stdout};
 use std::time::Instant;
+
+
+use crossterm::terminal::{
+    disable_raw_mode,enable_raw_mode,EnterAlternateScreen,LeaveAlternateScreen,
+
+};
+
+use crossterm::ExecutableCommand;
+use ratatui::backend::CrosstermBackend;
+
+use ratatui::prelude::*;
+
+use ratatui::widgets::canvas::{Canvas,Painter,Shape};
+
+use ratatui::widgets::{
+    Block,BorderType,Borders,Gauge,List,ListItem,Padding,Paragraph,Sparkline,
+
+};
+
+use symbols::Marker;
+
+use crate::agent::Agent;
+use crate::game::Game;
+use crate::nn::Net;
+use crate::sim::GenerationSummary;
+
+use crate::*;
+
+
+const COLOR_WALLS:Color=Color::Indexed(137);
+const COLOR_BODY:Color=Color::Indexed(140);
+const COLOR_HEAD:Color=Color::White;
+const COLOR_DEAD:Color=Color::Indexed(205);
+const COLOR_FOOD:Color::LightGreen;
+
+pub struct Viz{
+    frame_count:u32,
+    data:VizData,
+    term:Terminal<CrosstermBackend<Stdout>>,
+}
+
+struct TermViz;
+struct GameRender<'a>{
+    game:&'a Game,
+}
+struct NNColors{
+    disabled_color:Color,
+    inp_colors:Vec<Color>,
+    hidden_1_colors:Vec<Color>,
+    hidden_2_colors:Vec<Color>,
+    out
+}
+
+struct VizData{
+    agent:Option<Agent>,
+    stats:GenerationSummary,
+    sim_start_ts:Instant,
+    scores:Vec<u64>,
+    gen_times:Vec<u64>,
+    mutation_rate:f64,
+    mutation_magnitude:f64,
+
+}
