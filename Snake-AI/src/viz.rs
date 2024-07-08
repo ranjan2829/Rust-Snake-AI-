@@ -63,3 +63,35 @@ struct VizData{
     mutation_magnitude:f64,
 
 }
+
+
+impl Viz{
+    pub fn new()->io::Result<self>{
+        Ok(Self{
+            frame_count:0,
+            data:VizData::default(),
+            term:TermViz::init_terminal()?,
+
+        })
+        pub fn update_brain(&mut self,new_brain:Net){
+            self.data.agent=Some(Agent::with_brain(new_brain));
+
+
+        }
+        pub fn update_summary(&mut self,stats:GenerationSummary,mr:f64,mg:f64){
+            self.data.stats=stats;
+            self.data.mutation_rate=mr;
+            self.data.mutation_magnitude=mg;
+            self.data.scores.push(stats.gen_max_score as u64);
+            self.data.gen_times.push((stats.time_elapsed_secs*1000)as u64);
+            if self.data.scores.len()>VIZ_GRAPHS_LEN{
+                self.data.scores.remove(0);
+
+            }
+            if self.data.gen_times.len()>VIZ_GRAPHS_LEN{
+                self.data.gen_times.remove(0);
+                
+            }
+        }
+    }
+}
