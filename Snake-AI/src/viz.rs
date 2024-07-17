@@ -73,6 +73,7 @@ impl Viz{
             term:TermViz::init_terminal()?,
 
         })
+    }
         pub fn update_brain(&mut self,new_brain:Net){
             self.data.agent=Some(Agent::with_brain(new_brain));
 
@@ -104,6 +105,13 @@ impl Viz{
             let _=self.term.draw(|f| TermViz::draw(f,&self.data));
 
         }
+        pub fn restore_Terminal()->io::Result<()>{
+            disable_raw_mode()?;
+            stdout().execute(LeaveAlternateScreen)?;
+            Ok(())
+        }
+
 
     }
+
 }
