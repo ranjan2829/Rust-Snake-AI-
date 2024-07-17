@@ -113,5 +113,36 @@ impl Viz{
 
 
     }
+    //rataUI Terminal Rendering
+
+    impl TermViz{
+        fn init_terminal()->io::Result<Terminal<CrosstermBackend<Stdout>>>{
+            enable_raw_mode()?;
+            stdout().execute(EnterAlternateScreen)?;
+            Terminal::new(CrosstermBackend::new(stdout()))
+        }
+        fn draw(f:&mut Frame,viz:&VizData){
+            //Gen 0 , Viz agent not availables yet;
+            if viz.agent.is_none(){
+                f.render_widget(
+                    TermViz::widget_raw_text("Running Gen 0 .please wait .....".to_string()),
+                    f.size(),
+
+                );
+                return;
+
+            }
+            if IS_LOW_DETAIL_MODE{
+                f.render_widget(
+                    TermViz::widget_raw_text(TermViz::get_simple_render_text(&viz)),
+                    f.size(),
+                );
+                return;
+
+            }
+        }
+
+    }
+
 
 }
