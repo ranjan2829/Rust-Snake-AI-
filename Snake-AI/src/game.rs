@@ -51,4 +51,30 @@ impl Game{
         pt.x>=GRID_SIZE||pt.x<=0||pt.y>=GRID_SIZE||pt.y<=0
     }
 
+    pub fn is_snake_body(&self,pt:Point)->bool{
+        self.body[1..].contains(&pt)
+    }
+
+    fn update_snake_position(&mut self){
+        self.head.x+=self.dir.value().0;
+        self.head.y+=self.dit.value().1;
+        for i in (1..self.body.len()).rev(){
+            self.body[i]=self.body[i-1];
+
+        }
+        self.body[0]=self.head;
+
+    }
+    fn handle_food_collision(&mut self){
+        if !self.head.equals(self.food){
+            self.no_food_steps+=1;
+            return;
+        }
+        self.no_food_steps=0;
+        self.body.push(Point::new(self.head.x,self.head.y));
+        self.food=Point::rand();
+
+    }
+
+
 }
