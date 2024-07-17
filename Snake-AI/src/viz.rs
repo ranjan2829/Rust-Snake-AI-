@@ -172,6 +172,34 @@ impl Viz{
 
             let[game_area,_]=game_viz_vertical.areas(game_lane);
             let [sim_summary,viz_summry,viz_score_gauge,max_score_gauge,gen_times_graph,score_grpah]=stats_viz_vertical.areas(stats_lane);
+            f.render_widget(TermViz::render_about(),about_area);
+            f.render_widget(TermViz::render_viz_score_gauge(agent.game.score()),
+                viz_score_gauge,
+            );
+            f.render_widget(TermViz::render_max_score_gauge(viz.stats.sim_max_score),
+                max_score_gauge,
+            );
+
+            f.render_widget(TermViz::render_score_graph(&viz.scores),score_graph);
+            f.render_widget(TermViz::render_gen_times_graph(&viz.gen_times),
+                gen_times_graph,
+            );
+
+            f.render_widget(
+                TermViz::render_sim_stats(
+                    &viz.stats,
+                    &viz.sim_start_ts,
+                    &viz.mutation_rate,
+                    &vizmutation_magnitude,
+
+                ),
+                sim_summary,
+
+            );
+
+            f.render_widget
+
+
 
         }
 
