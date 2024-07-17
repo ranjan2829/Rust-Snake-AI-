@@ -139,7 +139,40 @@ impl Viz{
                 );
                 return;
 
-            }
+
+            let agent=viz.agent.as_ref().unwrap();
+
+            let root=Layout::horizontal([
+                Constraint::Percentage(35),
+                Constraint::Percentage(40),
+                Constraint::Percentage(45),
+
+            ]);
+            let net_viz_vertical=Layout::vertical([
+                Constraint::Percentage(75),
+                Constraint::Percentage(25)
+            ]);
+
+            let game_viz_vertical=Layout::vertical([
+                Constraint::Percentage(100),
+                Constraint::Percentage(0),
+
+            ]);
+
+            let stats_viz_vertical=Layout::vertical([
+                Constraint::Percentage(25),
+                Constraint::Percentage(15),
+                Constraint::Percentage(10),
+                Constraint::Percentage(20),
+                Constraint::Percentage(20),
+
+            ]);
+            let [game_lane,net_lane,stats_lane]=root.areas(f.size());
+            let[nn_viz_area,about_area]=net_viz_vertical.areas(net_lane);
+
+            let[game_area,_]=game_viz_vertical.areas(game_lane);
+            let [sim_summary,viz_summry,viz_score_gauge,max_score_gauge,gen_times_graph,score_grpah]=stats_viz_vertical.areas(stats_lane);
+
         }
 
     }
