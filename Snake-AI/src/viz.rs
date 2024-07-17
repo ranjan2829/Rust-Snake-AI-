@@ -50,7 +50,7 @@ struct NNColors{
     inp_colors:Vec<Color>,
     hidden_1_colors:Vec<Color>,
     hidden_2_colors:Vec<Color>,
-    out
+    out_ colors:Vec<Color>,
 }
 
 struct VizData{
@@ -90,8 +90,20 @@ impl Viz{
             }
             if self.data.gen_times.len()>VIZ_GRAPHS_LEN{
                 self.data.gen_times.remove(0);
-                
+
+            }
+
+            let agent =self.data.agent.as_mut().unwrap();
+            let is_alive=agent.update();
+            if !is_alive{
+                self.data.agent=Some(Agent::with_brain(agent.brain.clone()));
+
             }
         }
+        pub fn draw(&mut self){
+            let _=self.term.draw(|f| TermViz::draw(f,&self.data));
+
+        }
+
     }
 }
