@@ -1,8 +1,0 @@
-/Users/ranjanshahajishitole/Desktop/Snake AI Game Rust/Rust-Snake-AI-/Snake-AI/target/debug/deps/liblock_api-15a7214981a27399.rmeta: /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/lib.rs /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/mutex.rs /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/remutex.rs /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/rwlock.rs
-
-/Users/ranjanshahajishitole/Desktop/Snake AI Game Rust/Rust-Snake-AI-/Snake-AI/target/debug/deps/lock_api-15a7214981a27399.d: /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/lib.rs /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/mutex.rs /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/remutex.rs /Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/rwlock.rs
-
-/Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/lib.rs:
-/Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/mutex.rs:
-/Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/remutex.rs:
-/Users/ranjanshahajishitole/.cargo/registry/src/index.crates.io-6f17d22bba15001f/lock_api-0.4.12/src/rwlock.rs:
