@@ -51,4 +51,45 @@ impl FourDirs {
             Self::Top => (0, 1),
         }
     }
+    pub fn get_one_hot_dir(&self)->Vec<f64>{
+        match self{
+            FourDirs::Left=>vec![1.0,0.0,0.0,0.0],
+            FourDirs::Right=>vec![0.0,1.0,0.0,0.0],
+            FourDirs::Bottom=>vec![0.0,0.0,1.0,0.0],
+            FourDirs::Top=>vec![0.0,0.0,0.0,1.0],
+        }
+    }
+}
+impl Point {
+    pub fn new(x:i32,y:i32)=>Self{
+        Self{x,y}
+    }
+    pub fn equals(&self,other:Self)->bool{
+        return self.x==other.x&& self.y==other.y;
+    }
+
+    pub fn rnd()->Self{
+        let mut rng=rand::thread_rng();
+        Self{
+            x:rng.gen_Range(1..GRID_SIZE-1),
+            y:rng.gen_range(1..GRID_SIZE-1),
+        }
+    }
+
+}
+
+impl Into<Point> for (i32,i32){
+    fn into(self)->Point{
+        Point{
+            x:self.0,
+            y:self.1,
+        }
+    }
+}
+
+
+impl From<Point> for (i32,i32){
+    fn from(point:Point)->Self{
+        (point.x,point.y)
+    }
 }
